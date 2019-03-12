@@ -60,17 +60,15 @@ function txtEnterEvent(e) { //  e return which button has been pressed
 
 function search() {
   var me = $(this);
-  var content = me.val();
+  var content = me.val().toLowerCase();
 
   var chatList = $(".allChat > .chat");
   chatList.removeClass("hidden");
 
   for (var i = 0; i < chatList.length; i++) {
     var chat = $(".allChat > .chat").eq(i);
-    var chatContent = chat.children(".chat-text");
-    var finalContent = chatContent.children(".username")
-    var username = finalContent.text()
-    console.log(finalContent.text());
+    var usernameElement = $(".allChat > .chat:eq("+i+") > .chat-text > .username");
+    var username = usernameElement.text().toLowerCase();
     if (!username.includes(content)) {
       chat.addClass("hidden")
     }

@@ -33,6 +33,13 @@
  transform: translate(-50%, -50%);
 }
 
+@media screen and (max-width: 1400px) {
+  .myContainer {
+   width: 100vw;
+   height: 100vh;
+
+  }
+}
 /* left container div style */
 
 .left-container {
@@ -171,11 +178,14 @@
 /* all chat */
 
 .allChat {
+
   width: 100%;
   height: calc(100% - 200px);
   background: white;
 
   flex-direction: column;
+
+  overflow: auto;
 }
 
 /* single chat */
@@ -185,6 +195,7 @@
   height: 72px;
   border-bottom: 1px solid #EEEEEE;
 
+  display: flex;
   align-items: center;
 }
 
@@ -205,6 +216,7 @@
 
 .chat > .chat-text {
   height: 50px;
+  width: calc(100% - 100px);
   padding-left: 15px;
   flex-direction: column;
   justify-content: center;
@@ -222,8 +234,10 @@
 }
 
 .when {
-  height: 40px;
+  height: 30px;
+  margin-right: 10px;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .when > span {
@@ -360,6 +374,8 @@
   font-weight: 100;
 }
 
+/* class for hidden div in JS */
+
 .hidden {
-  background: red;
+  display: none;
 }
