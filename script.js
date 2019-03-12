@@ -36,7 +36,7 @@ function addMessageReceived() {
 
   $(message).addClass("message received")
 
-  $(messageContent).text("message received");
+  $(messageContent).text("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
   $(messageDetail).text("02:44");
 
   messageContent.append(messageDetail);
@@ -56,11 +56,81 @@ function txtEnterEvent(e) { //  e return which button has been pressed
   }
 }
 
+// search test
+
+function search() {
+  var me = $(this);
+  var content = me.val();
+
+  var chatList = $(".allChat > .chat");
+  chatList.removeClass("hidden");
+
+  for (var i = 0; i < chatList.length; i++) {
+    var chat = $(".allChat > .chat").eq(i);
+    var chatContent = chat.children(".chat-text");
+    var finalContent = chatContent.children(".username")
+    var username = finalContent.text()
+    console.log(finalContent.text());
+    if (!username.includes(content)) {
+      chat.addClass("hidden")
+    }
+  }
+}
+
 //  init function
 
 function init() {
   var txt = $("#myTxt");
   txt.keyup(txtEnterEvent); //  trigger func event
+
+  var input = $(".search > input");
+  input.keyup(search);
 }
 
 $(document).ready(init);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// FInish
