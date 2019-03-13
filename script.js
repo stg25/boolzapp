@@ -8,13 +8,13 @@ function addMessageSent() {
   var messageLayout = document.createElement("p");
   var messageContent = document.createElement("span");
   var messageDetail = document.createElement("small");
-  var wrapper = $(".myMain")
+  var wrapper = $(".myChat.selected")
 
   var chatInput = $("#myTxt");
   var chatVal = chatInput.val();
 
   //  add class to created div message
-  $(message).addClass("message sent")
+  $(message).addClass("message sent");
 
   //  internal message text
   $(messageContent).text(chatVal);
@@ -35,7 +35,7 @@ function addMessageReceived() {
   var messageLayout = document.createElement("p");
   var messageContent = document.createElement("span");
   var messageDetail = document.createElement("small");
-  var wrapper = $(".myMain")
+  var wrapper = $(".myChat.selected")
 
   $(message).addClass("message received")
 
@@ -67,13 +67,7 @@ function clearInput() {
   input.val("");
 }
 
-//  message time
-
-function messageTime() {
-  var time = $.now();
-}
-
-//  time function
+//  time function with night hours zero accrocchio
 
 function time() {
   var date = new Date();
@@ -109,6 +103,22 @@ function search() {
   }
 }
 
+//  change chat function
+
+function changeChat() {
+  var me = $(this);
+  var meIndex = me.index();
+
+  // chat
+  var myChat = $(".myChat");
+  myChat.removeClass("selected");
+
+  var selectedMyChat = myChat.eq(meIndex);
+  selectedMyChat.addClass("selected")
+
+}
+
+
 //  init function
 
 function init() {
@@ -119,6 +129,10 @@ function init() {
   // search function
   var input = $(".search > input");
   input.keyup(search);
+
+  // change chat function
+  var chat = $(".chat");
+  chat.click(changeChat)
 
 }
 

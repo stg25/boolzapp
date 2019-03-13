@@ -189,10 +189,6 @@
   overflow: auto;
 }
 
-allChat::-webkit-scrollbar-track {
-  background: yellow;
-}
-
 /* single chat */
 
 .chat {
@@ -263,6 +259,7 @@ allChat::-webkit-scrollbar-track {
   height: 100%;
 
   flex-direction: column;
+  justify-content: space-between;
 }
 
 /* header */
@@ -301,18 +298,24 @@ allChat::-webkit-scrollbar-track {
 
 /* main right container */
 
-.myMain {
+.myChat {
   width: 100%;
   height: calc(100% - 122px);
   padding: 20px 70px;
 
   background-image: url("img/msg-bg.jpg");
 
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  /* flex-direction: column;
+  justify-content: flex-end; */
 
-  overflow: auto;
+  display: none;
+
+}
+
+
+
+.myChat.selected {
+  display: block;
 }
 
 .message {
