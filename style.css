@@ -40,7 +40,8 @@
 
   }
 }
-/* left container div style */
+
+/* left container style */
 
 .left-container {
   width: 30%;
@@ -188,6 +189,10 @@
   overflow: auto;
 }
 
+allChat::-webkit-scrollbar-track {
+  background: yellow;
+}
+
 /* single chat */
 
 .chat {
@@ -251,7 +256,7 @@
 }
 
 
-/* right container div style */
+/* right container style */
 
 .right-container {
   width: 70%;
@@ -299,12 +304,19 @@
 .myMain {
   width: 100%;
   height: calc(100% - 122px);
-  padding: 20px 80px;
+  padding: 20px 70px;
 
   background-image: url("img/msg-bg.jpg");
 
+  display: flex;
   flex-direction: column;
   justify-content: flex-end;
+
+  overflow: auto;
+}
+
+.message {
+  margin: 10px;
 }
 
 .message span {

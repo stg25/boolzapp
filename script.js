@@ -10,12 +10,15 @@ function addMessageSent() {
   var messageDetail = document.createElement("small");
   var wrapper = $(".myMain")
 
-  //  add class to message
+  var chatInput = $("#myTxt");
+  var chatVal = chatInput.val();
+
+  //  add class to created div message
   $(message).addClass("message sent")
 
-  //  internal text
-  $(messageContent).text("message sent");
-  $(messageDetail).text("02:43");
+  //  internal message text
+  $(messageContent).text(chatVal);
+  $(messageDetail).text(time);
 
   //  add "message" to "wrapper"
   messageContent.append(messageDetail);
@@ -37,7 +40,7 @@ function addMessageReceived() {
   $(message).addClass("message received")
 
   $(messageContent).text("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
-  $(messageDetail).text("02:44");
+  $(messageDetail).text(time);
 
   messageContent.append(messageDetail);
   messageLayout.append(messageContent);
@@ -52,11 +55,42 @@ function txtEnterEvent(e) { //  e return which button has been pressed
 
   if (keyPressed == 13) { //  13 is the same as "enter"
     addMessageSent();
+    clearInput();
     setTimeout(addMessageReceived, 1000)
   }
 }
 
-// search test
+//  clear input function
+
+function clearInput() {
+  var input = $("#myTxt");
+  input.val("");
+}
+
+//  message time
+
+function messageTime() {
+  var time = $.now();
+}
+
+//  time function
+
+function time() {
+  var date = new Date();
+  // var time = date.getHours() + ":" + date.getMinutes();
+  var hour = date.getHours();
+  if (hour < 10 ) {
+    hour = "0" + hour
+  }
+  var minute = date.getMinutes();
+  if (minute < 10 ) {
+    minute = "0" + minute
+  }
+  var time = hour + ":" + minute
+  return time
+}
+
+// user search function
 
 function search() {
   var me = $(this);
@@ -78,57 +112,14 @@ function search() {
 //  init function
 
 function init() {
+  // reply function
   var txt = $("#myTxt");
   txt.keyup(txtEnterEvent); //  trigger func event
 
+  // search function
   var input = $(".search > input");
   input.keyup(search);
+
 }
 
 $(document).ready(init);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// FInish
