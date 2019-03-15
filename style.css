@@ -319,6 +319,12 @@
   display: block;
 }
 
+/* message */
+
+.message {
+  margin: 10px:
+}
+
 .message > p{
   max-width: 45%;
 }
@@ -354,6 +360,8 @@
 .received span {
   background: white;
 }
+
+/* dropdown message menu */
 
 .myDropdown {
   width: 160px;
@@ -392,7 +400,6 @@
   top: 80%;
   left: 40%;
 }
-
 
 /* footer */
 

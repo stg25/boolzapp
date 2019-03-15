@@ -4,11 +4,11 @@
 function addMessageSent() {
 
   //  recreate div "message" linked to div father "wrapper"
+  var wrapper = $(".myChat.selected")
   var message = document.createElement("div");
   var messageLayout = document.createElement("p");
   var messageContent = document.createElement("span");
   var messageDetail = document.createElement("small");
-  var wrapper = $(".myChat.selected")
 
   var chatInput = $("#myTxt");
   var chatVal = chatInput.val();
@@ -25,17 +25,41 @@ function addMessageSent() {
   messageLayout.append(messageContent);
   message.append(messageLayout);
   wrapper.append(message);
+
+  // maxi accrocchio for hidden dropdown
+  var myDropdown = document.createElement("div");
+  var buttonOne  = document.createElement("button");
+  var buttonTwo  = document.createElement("button");
+  var buttonThree  = document.createElement("button");
+  var buttonFour  = document.createElement("button");
+  var buttonFive  = document.createElement("button");
+
+  $(myDropdown).addClass("myDropdown hidden");
+  $(buttonFive).addClass("myDelete");
+
+  $(buttonOne).text("Message info");
+  $(buttonTwo).text("Reply");
+  $(buttonThree).text("Forward message");
+  $(buttonFour).text("Star message");
+  $(buttonFive).text("Delete message");
+
+  myDropdown.append(buttonOne);
+  myDropdown.append(buttonTwo);
+  myDropdown.append(buttonThree);
+  myDropdown.append(buttonFour);
+  myDropdown.append(buttonFive);
+  message.append(myDropdown)
 }
 
 //  add RECEIVED message to chat
 
 function addMessageReceived() {
 
+  var wrapper = $(".myChat.selected")
   var message = document.createElement("div");
   var messageLayout = document.createElement("p");
   var messageContent = document.createElement("span");
   var messageDetail = document.createElement("small");
-  var wrapper = $(".myChat.selected")
 
   $(message).addClass("message received")
 
@@ -46,6 +70,57 @@ function addMessageReceived() {
   messageLayout.append(messageContent);
   message.append(messageLayout);
   wrapper.append(message);
+
+  var myDropdown = document.createElement("div");
+  var buttonOne  = document.createElement("button");
+  var buttonTwo  = document.createElement("button");
+  var buttonThree  = document.createElement("button");
+  var buttonFour  = document.createElement("button");
+  var buttonFive  = document.createElement("button");
+
+  $(myDropdown).addClass("myDropdown hidden");
+  $(buttonFive).addClass("myDelete");
+
+  $(buttonOne).text("Message info");
+  $(buttonTwo).text("Reply");
+  $(buttonThree).text("Forward message");
+  $(buttonFour).text("Star message");
+  $(buttonFive).text("Delete message");
+
+  myDropdown.append(buttonOne);
+  myDropdown.append(buttonTwo);
+  myDropdown.append(buttonThree);
+  myDropdown.append(buttonFour);
+  myDropdown.append(buttonFive);
+  message.append(myDropdown)
+}
+
+//  add message menu ?!?!?!!?!?
+
+function addMessageMenu() {
+
+  var myDropdown = document.createElement("div");
+  var buttonOne  = document.createElement("button");
+  var buttonTwo  = document.createElement("button");
+  var buttonThree  = document.createElement("button");
+  var buttonFour  = document.createElement("button");
+  var buttonFive  = document.createElement("button");
+
+  $(myDropdown).addClass("myDropdown");
+  $(buttonFive).addClass("myDelete");
+
+  $(buttonOne).text("Message info");
+  $(buttonTwo).text("Reply");
+  $(buttonThree).text("Forward message");
+  $(buttonFour).text("Star message");
+  $(buttonFive).text("Delete message");
+
+  myDropdown.append(buttonOne);
+  myDropdown.append(buttonTwo);
+  myDropdown.append(buttonThree);
+  myDropdown.append(buttonFour);
+  myDropdown.append(buttonFive);
+
 }
 
 //  understand which button has pressed
@@ -58,6 +133,15 @@ function txtEnterEvent(e) { //  e return which button has been pressed
     clearInput();
     setTimeout(addMessageReceived, 1000)
   }
+}
+
+//  update chat time
+
+function updateChatTime() {
+  var username = $(".message > p:lastchild ");
+
+  var chatTime = $(".when > span")
+  $(messageDetail).text(time);
 }
 
 //  clear input function
@@ -118,17 +202,22 @@ function changeChat() {
 
 }
 
-//  delete message sent
+//  show dropdown message menu
 
-function deleteMessageSent() {
-  var message = $(".sent");
-  message.remove();
+function showDropdown() {
+  var me = $(this);
+  var myDropdown = me.find(".myDropdown");
+
+  myDropdown.toggleClass("hidden");
 }
 
-//  delete message received
 
-function deleteMessageReceived() {
-  var message = $(".received");
+//  delete message sent
+
+function deleteMessage() {
+  var me = $(this);
+  var message = me.closest(".message")
+
   message.remove();
 }
 
@@ -147,33 +236,15 @@ function init() {
   var chat = $(".chat");
   chat.click(changeChat)
 
-  // delete sent message
-  var deleteSent = $("#deleteSent");
-  deleteSent.click(deleteMessageSent)
+  //dynamic selector
+  var doc = $(document);
 
-  // delete received message
-  var deleteReceived = $("#deleteReceived");
-  deleteReceived.click(deleteMessageReceived)
+  // dropdpwn message menu show
+  doc.on("click", ".message", showDropdown)
 
+  // delete message
+  doc.on("click", ".myDelete", deleteMessage)
 
 }
 
 $(document).ready(init);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Finish
