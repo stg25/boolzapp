@@ -39,7 +39,7 @@ function addMessageReceived() {
 
   $(message).addClass("message received")
 
-  $(messageContent).text("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+  $(messageContent).text("Lorem ipsum dolor sit amet, consectetur adipis et elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
   $(messageDetail).text(time);
 
   messageContent.append(messageDetail);
@@ -118,6 +118,19 @@ function changeChat() {
 
 }
 
+//  delete message sent
+
+function deleteMessageSent() {
+  var message = $(".sent");
+  message.remove();
+}
+
+//  delete message received
+
+function deleteMessageReceived() {
+  var message = $(".received");
+  message.remove();
+}
 
 //  init function
 
@@ -130,10 +143,37 @@ function init() {
   var input = $(".search > input");
   input.keyup(search);
 
-  // change chat function
+  // change chat on click
   var chat = $(".chat");
   chat.click(changeChat)
+
+  // delete sent message
+  var deleteSent = $("#deleteSent");
+  deleteSent.click(deleteMessageSent)
+
+  // delete received message
+  var deleteReceived = $("#deleteReceived");
+  deleteReceived.click(deleteMessageReceived)
+
 
 }
 
 $(document).ready(init);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Finish
