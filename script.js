@@ -4,96 +4,99 @@
 function addMessageSent() {
 
   //  recreate div "message" linked to div father "wrapper"
-  var wrapper = $(".myChat.selected")
-  var message = document.createElement("div");
-  var messageLayout = document.createElement("p");
-  var messageContent = document.createElement("span");
-  var messageDetail = document.createElement("small");
-
-  var chatInput = $("#myTxt");
-  var chatVal = chatInput.val();
+  // var wrapper = $(".myChat.selected")
+  // var message = document.createElement("div");
+  // var messageLayout = document.createElement("p");
+  // var messageContent = document.createElement("span");
+  // var messageDetail = document.createElement("small");
+  //
+  // var chatInput = $("#myTxt");
+  // var chatVal = chatInput.val();
 
   //  add class to created div message
   $(message).addClass("message sent");
 
   //  internal message text
-  $(messageContent).text(chatVal);
-  $(messageDetail).text(time);
+  // $(messageContent).text(chatVal);
+  // $(messageDetail).text(time);
 
   //  add "message" to "wrapper"
-  messageContent.append(messageDetail);
-  messageLayout.append(messageContent);
-  message.append(messageLayout);
-  wrapper.append(message);
+  // messageContent.append(messageDetail);
+  // messageLayout.append(messageContent);
+  // message.append(messageLayout);
+  // wrapper.append(message);
 
   // maxi accrocchio for hidden dropdown
-  var myDropdown = document.createElement("div");
-  var buttonOne  = document.createElement("button");
-  var buttonTwo  = document.createElement("button");
-  var buttonThree  = document.createElement("button");
-  var buttonFour  = document.createElement("button");
-  var buttonFive  = document.createElement("button");
+}
 
-  $(myDropdown).addClass("myDropdown hidden");
-  $(buttonFive).addClass("myDelete");
 
-  $(buttonOne).text("Message info");
-  $(buttonTwo).text("Reply");
-  $(buttonThree).text("Forward message");
-  $(buttonFour).text("Star message");
-  $(buttonFive).text("Delete message");
+function addMessageSent() {
+  // takes input val
+  var myMessage = $("#myTxt").val();
+  console.log(myMessage);
 
-  myDropdown.append(buttonOne);
-  myDropdown.append(buttonTwo);
-  myDropdown.append(buttonThree);
-  myDropdown.append(buttonFour);
-  myDropdown.append(buttonFive);
-  message.append(myDropdown)
+  // create element data oblejct
+  var data = {
+
+    message: myMessage,
+  };
+
+  // first step: takes HTML content
+  var template = $("#message-template");
+
+  // second step: handlebar works
+  var compiled = Handlebars.compile(template);
+
+  //third step: gives the data to HTML
+  var finalHTML = compiled(data);
+
+  // fourth step: append to HTML
+  var container = $(".myChat selected");
+  container.append(finalHTML);
+
 }
 
 //  add RECEIVED message to chat
 
-function addMessageReceived() {
-
-  var wrapper = $(".myChat.selected")
-  var message = document.createElement("div");
-  var messageLayout = document.createElement("p");
-  var messageContent = document.createElement("span");
-  var messageDetail = document.createElement("small");
-
-  $(message).addClass("message received")
-
-  $(messageContent).text("Lorem ipsum dolor sit amet, consectetur adipis et elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
-  $(messageDetail).text(time);
-
-  messageContent.append(messageDetail);
-  messageLayout.append(messageContent);
-  message.append(messageLayout);
-  wrapper.append(message);
-
-  var myDropdown = document.createElement("div");
-  var buttonOne  = document.createElement("button");
-  var buttonTwo  = document.createElement("button");
-  var buttonThree  = document.createElement("button");
-  var buttonFour  = document.createElement("button");
-  var buttonFive  = document.createElement("button");
-
-  $(myDropdown).addClass("myDropdown hidden");
-  $(buttonFive).addClass("myDelete");
-
-  $(buttonOne).text("Message info");
-  $(buttonTwo).text("Reply");
-  $(buttonThree).text("Forward message");
-  $(buttonFour).text("Star message");
-  $(buttonFive).text("Delete message");
-
-  myDropdown.append(buttonOne);
-  myDropdown.append(buttonTwo);
-  myDropdown.append(buttonThree);
-  myDropdown.append(buttonFour);
-  myDropdown.append(buttonFive);
-  message.append(myDropdown)
-}
+// function addMessageReceived() {
+//
+//   var wrapper = $(".myChat.selected")
+//   var message = document.createElement("div");
+//   var messageLayout = document.createElement("p");
+//   var messageContent = document.createElement("span");
+//   var messageDetail = document.createElement("small");
+//
+//   $(message).addClass("message received")
+//
+//   $(messageContent).text("Lorem ipsum dolor sit amet, consectetur adipis et elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+//   $(messageDetail).text(time);
+//
+//   messageContent.append(messageDetail);
+//   messageLayout.append(messageContent);
+//   message.append(messageLayout);
+//   wrapper.append(message);
+//
+// }
+//
+// function addMessageReceived() {
+//
+//   var wrapper = $(".myChat.selected")
+//   var message = document.createElement("div");
+//   var messageLayout = document.createElement("p");
+//   var messageContent = document.createElement("span");
+//   var messageDetail = document.createElement("small");
+//
+//   $(message).addClass("message received")
+//
+//   $(messageContent).text("Lorem ipsum dolor sit amet, consectetur adipis et elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+//   $(messageDetail).text(time);
+//
+//   messageContent.append(messageDetail);
+//   messageLayout.append(messageContent);
+//   message.append(messageLayout);
+//   wrapper.append(message);
+//
+// }
 
 //  add message menu ?!?!?!!?!?
 
@@ -221,6 +224,16 @@ function deleteMessage() {
   message.remove();
 }
 
+function updateChatTime() {
+  var me = $(this);
+  var message = me.find("small");
+  var newTime = message.text();
+  console.log(newTime);
+
+  var chatTime = $(".when span");
+  chatTime.text(newTime)
+}
+
 //  init function
 
 function init() {
@@ -240,11 +253,13 @@ function init() {
   var doc = $(document);
 
   // dropdpwn message menu show
-  doc.on("click", ".message", showDropdown)
+  doc.on("click", ".message", showDropdown);
 
   // delete message
   doc.on("click", ".myDelete", deleteMessage)
 
+  // update chat time
+  doc.on("click", ".message", updateChatTime)
 }
 
 $(document).ready(init);
