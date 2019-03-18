@@ -25,6 +25,10 @@ function addMessage() {
   // fourth step: append to HTML
   var container = $(".myChat.selected");
   container.append(finalHTML);
+
+  // automatic scroll down
+  container.animate({ scrollTop: container.prop("scrollHeight")});
+
 }
 
 //  understand which button has pressed
