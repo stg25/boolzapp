@@ -12,38 +12,29 @@
     <!-- JS / jQuery scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js" charset="utf-8"></script>
-
-
-
-
-
-
     <!-- Handlebars message template -->
     <script id="message-template" type="text/x-handlebars-template">
-      <div class="myChat selected">
-       <div class="message sent">
-         <p><span>{{ message }}<small>02:04</small></span></p>
-         <div class="myDropdown hidden">
-           <button type="button">Message Info</button>
-           <button type="button">Reply</button>
-           <button type="button">Forward message</button>
-           <button type="button">Star message</button>
-           <button class="myDelete" type="button">Delete message</button>
-         </div>
-       </div>
-       <div class="message received">
-         <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<small>02:05</small></span></p>
-         <div class="myDropdown hidden">
-           <button type="button">Message Info</button>
-           <button type="button">Reply</button>
-           <button type="button">Forward message</button>
-           <button type="button">Star message</button>
-           <button class="myDelete" type="button">Delete message</button>
-         </div>
-       </div>
-     </div>
+      <div class="message sent">
+        <p><span>{{ messageSent }}<small>{{ time }}</small></span></p>
+        <div class="myDropdown hidden">
+          <button type="button">Message Info</button>
+          <button type="button">Reply</button>
+          <button type="button">Forward message</button>
+          <button type="button">Star message</button>
+          <button class="myDelete" type="button">Delete message</button>
+        </div>
+      </div>
+      <div class="message received">
+        <p><span>{{ messageReceived }}<small>{{ time }}</small></span></p>
+        <div class="myDropdown hidden">
+          <button type="button">Message Info</button>
+          <button type="button">Reply</button>
+          <button type="button">Forward message</button>
+          <button type="button">Star message</button>
+          <button class="myDelete" type="button">Delete message</button>
+        </div>
+      </div>
     </script>
-
     <script src="script.js"></script>
   </head>
   <body>
@@ -85,7 +76,7 @@
         <!-- LEFT all chat -->
         <div class="allChat">
           <!-- chat zero -->
-          <div class="chat one">
+          <div class="chat one selected">
             <div class="chat-img"></div>  <!-- img used as background-image -->
             <div class="d-flex chat-text">
               <span class="username">Aziz Karim</span>
@@ -250,7 +241,7 @@
             <i class="fas fa-ellipsis-v"></i>
           </div>
         </div>
-        <!-- RIGHT chat created by JS + HB-->
+        <!-- RIGHT chat created by JS -->
          <div class="myChat selected">
           <!-- <div class="message sent">
             <p><span>Hello<small>02:04</small></span></p>
@@ -273,7 +264,18 @@
             </div>
           </div> -->
         </div>
-
+        <div class="myChat"></div>
+        <div class="myChat"></div>
+        <div class="myChat"></div>
+        <div class="myChat"></div>
+        <div class="myChat"></div>
+        <div class="myChat"></div>
+        <div class="myChat"></div>
+        <div class="myChat"></div>
+        <div class="myChat"></div>
+        <div class="myChat"></div>
+        <div class="myChat"></div>
+        <div class="myChat"></div>
         <!-- RIGHT footer -->
         <div class="d-flex myFooter">
           <i class="far fa-smile fa-lg"></i>

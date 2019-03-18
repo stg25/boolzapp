@@ -158,7 +158,6 @@
   color: #CBCACB;
 }
 
-
 .search > input {
   width: 95%;
   height: 70%;
@@ -307,6 +306,8 @@
   background-image: url("img/msg-bg.jpg");
 
   display: none;
+
+  overflow: auto;
 }
 
 .myChat:after {
@@ -325,7 +326,7 @@
   margin: 10px:
 }
 
-.message > p{
+.message > p {
   max-width: 45%;
 }
 

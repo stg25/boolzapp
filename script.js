@@ -1,48 +1,20 @@
 
 //  add SENT message to chat
 
-function addMessageSent() {
-
-  //  recreate div "message" linked to div father "wrapper"
-  // var wrapper = $(".myChat.selected")
-  // var message = document.createElement("div");
-  // var messageLayout = document.createElement("p");
-  // var messageContent = document.createElement("span");
-  // var messageDetail = document.createElement("small");
-  //
-  // var chatInput = $("#myTxt");
-  // var chatVal = chatInput.val();
-
-  //  add class to created div message
-  $(message).addClass("message sent");
-
-  //  internal message text
-  // $(messageContent).text(chatVal);
-  // $(messageDetail).text(time);
-
-  //  add "message" to "wrapper"
-  // messageContent.append(messageDetail);
-  // messageLayout.append(messageContent);
-  // message.append(messageLayout);
-  // wrapper.append(message);
-
-  // maxi accrocchio for hidden dropdown
-}
-
-
-function addMessageSent() {
+function addMessage() {
   // takes input val
   var myMessage = $("#myTxt").val();
-  console.log(myMessage);
 
   // create element data oblejct
   var data = {
 
-    message: myMessage,
+    messageSent: myMessage,
+    time: time,
+    messageReceived: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidat"
   };
 
   // first step: takes HTML content
-  var template = $("#message-template");
+  var template = $("#message-template").html();
 
   // second step: handlebar works
   var compiled = Handlebars.compile(template);
@@ -51,79 +23,8 @@ function addMessageSent() {
   var finalHTML = compiled(data);
 
   // fourth step: append to HTML
-  var container = $(".myChat selected");
+  var container = $(".myChat.selected");
   container.append(finalHTML);
-
-}
-
-//  add RECEIVED message to chat
-
-// function addMessageReceived() {
-//
-//   var wrapper = $(".myChat.selected")
-//   var message = document.createElement("div");
-//   var messageLayout = document.createElement("p");
-//   var messageContent = document.createElement("span");
-//   var messageDetail = document.createElement("small");
-//
-//   $(message).addClass("message received")
-//
-//   $(messageContent).text("Lorem ipsum dolor sit amet, consectetur adipis et elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
-//   $(messageDetail).text(time);
-//
-//   messageContent.append(messageDetail);
-//   messageLayout.append(messageContent);
-//   message.append(messageLayout);
-//   wrapper.append(message);
-//
-// }
-//
-// function addMessageReceived() {
-//
-//   var wrapper = $(".myChat.selected")
-//   var message = document.createElement("div");
-//   var messageLayout = document.createElement("p");
-//   var messageContent = document.createElement("span");
-//   var messageDetail = document.createElement("small");
-//
-//   $(message).addClass("message received")
-//
-//   $(messageContent).text("Lorem ipsum dolor sit amet, consectetur adipis et elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
-//   $(messageDetail).text(time);
-//
-//   messageContent.append(messageDetail);
-//   messageLayout.append(messageContent);
-//   message.append(messageLayout);
-//   wrapper.append(message);
-//
-// }
-
-//  add message menu ?!?!?!!?!?
-
-function addMessageMenu() {
-
-  var myDropdown = document.createElement("div");
-  var buttonOne  = document.createElement("button");
-  var buttonTwo  = document.createElement("button");
-  var buttonThree  = document.createElement("button");
-  var buttonFour  = document.createElement("button");
-  var buttonFive  = document.createElement("button");
-
-  $(myDropdown).addClass("myDropdown");
-  $(buttonFive).addClass("myDelete");
-
-  $(buttonOne).text("Message info");
-  $(buttonTwo).text("Reply");
-  $(buttonThree).text("Forward message");
-  $(buttonFour).text("Star message");
-  $(buttonFive).text("Delete message");
-
-  myDropdown.append(buttonOne);
-  myDropdown.append(buttonTwo);
-  myDropdown.append(buttonThree);
-  myDropdown.append(buttonFour);
-  myDropdown.append(buttonFive);
-
 }
 
 //  understand which button has pressed
@@ -132,19 +33,10 @@ function txtEnterEvent(e) { //  e return which button has been pressed
   var keyPressed = e.which;
 
   if (keyPressed == 13) { //  13 is the same as "enter"
-    addMessageSent();
+    addMessage();
     clearInput();
-    setTimeout(addMessageReceived, 1000)
+    updateChatTime();
   }
-}
-
-//  update chat time
-
-function updateChatTime() {
-  var username = $(".message > p:lastchild ");
-
-  var chatTime = $(".when > span")
-  $(messageDetail).text(time);
 }
 
 //  clear input function
@@ -158,17 +50,17 @@ function clearInput() {
 
 function time() {
   var date = new Date();
-  // var time = date.getHours() + ":" + date.getMinutes();
+  var time = date.getHours() + ":" + date.getMinutes();
   var hour = date.getHours();
   if (hour < 10 ) {
-    hour = "0" + hour
+    hour = "0" + hour;
   }
   var minute = date.getMinutes();
   if (minute < 10 ) {
-    minute = "0" + minute
+    minute = "0" + minute;
   }
-  var time = hour + ":" + minute
-  return time
+  var time = hour + ":" + minute;
+  return time;
 }
 
 // user search function
@@ -201,7 +93,7 @@ function changeChat() {
   myChat.removeClass("selected");
 
   var selectedMyChat = myChat.eq(meIndex);
-  selectedMyChat.addClass("selected")
+  selectedMyChat.addClass("selected");
 
 }
 
@@ -225,32 +117,38 @@ function deleteMessage() {
 }
 
 function updateChatTime() {
-  var me = $(this);
-  var message = me.find("small");
-  var newTime = message.text();
-  console.log(newTime);
+  var me = $(".myChat.selected");
+  var meIndex = me.index() - 1; // index 0 = always HTML myHeader
 
-  var chatTime = $(".when span");
-  chatTime.text(newTime)
+  var chat = $(".chat");
+  chat.removeClass("selected");
+
+  var selectedChat = chat.eq(meIndex);
+  selectedChat.addClass("selected");
+
+  var myTime = $(".myChat.selected > .message:last-child.received small").html();
+  var myTimeContainer = $(".chat.selected > .when > span");
+
+  myTimeContainer.text(myTime);
+}
+
+// Update chat info
+
+function updateChatInfo() {
+  var me = $(this);
+  var username = me.find(".username").text();
+  var myUsernameContainer = $("")
 }
 
 //  init function
 
 function init() {
-  // reply function
-  var txt = $("#myTxt");
-  txt.keyup(txtEnterEvent); //  trigger func event
-
-  // search function
-  var input = $(".search > input");
-  input.keyup(search);
-
-  // change chat on click
-  var chat = $(".chat");
-  chat.click(changeChat)
 
   //dynamic selector
   var doc = $(document);
+
+  // reply function
+  doc.on("keyup", "#myTxt", txtEnterEvent);
 
   // dropdpwn message menu show
   doc.on("click", ".message", showDropdown);
@@ -258,8 +156,14 @@ function init() {
   // delete message
   doc.on("click", ".myDelete", deleteMessage)
 
-  // update chat time
-  doc.on("click", ".message", updateChatTime)
+  // change chat on click + sub updateChatUsername()
+  doc.on("click", ".chat", changeChat);
+
+  // search function
+  doc.on("keyup", ".search > input", search);
+
+  // change username
+  doc.on("click", ".chat", updateChatInfo);
 }
 
 $(document).ready(init);
