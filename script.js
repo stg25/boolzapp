@@ -200,7 +200,7 @@ function init() {
   // search function
   doc.on("keyup", ".search > input", search);
 
-  // change username
+  // change usernamen - in progress
   doc.on("click", ".chat", updateChatInfo);
 }
 
