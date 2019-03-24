@@ -13,7 +13,9 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js" charset="utf-8"></script>
     <!-- Handlebars message template -->
-    <script id="message-template" type="text/x-handlebars-template">
+
+    <!-- message SENT handlebars script -->
+    <script id="message-sent-template" type="text/x-handlebars-template">
       <div class="message sent">
         <p><span>{{ messageSent }}<small>{{ time }}</small></span></p>
         <div class="myDropdown hidden">
@@ -24,6 +26,10 @@
           <button class="myDelete" type="button">Delete message</button>
         </div>
       </div>
+      </script>
+
+      <!-- message RECEIVED handlebars script -->
+      <script id="message-received-template" type="text/x-handlebars-template">
       <div class="message received">
         <p><span>{{ messageReceived }}<small>{{ time }}</small></span></p>
         <div class="myDropdown hidden">
@@ -34,7 +40,9 @@
           <button class="myDelete" type="button">Delete message</button>
         </div>
       </div>
-    </script>
+      </script>
+
+
     <script src="script.js"></script>
   </head>
   <body>

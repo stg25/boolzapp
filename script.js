@@ -9,12 +9,11 @@ function addMessage() {
   var data = {
 
     messageSent: myMessage,
-    time: time,
-    messageReceived: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidat"
+    time: time()
   };
 
   // first step: takes HTML content
-  var template = $("#message-template").html();
+  var template = $("#message-sent-template").html();
 
   // second step: handlebar works
   var compiled = Handlebars.compile(template);
@@ -31,6 +30,40 @@ function addMessage() {
 
 }
 
+// add RECEIVED message to chat
+
+function replyMessage() {
+  $.ajax({
+    url: "https://www.boolean.careers/api/random/sentence",
+    method: "GET",
+
+    success: function (data, state) {
+      if (data.success) {
+        var ajaxText = data.response;
+
+        var data = {
+
+          messageReceived: ajaxText,
+          time: time()
+
+        };
+
+        var template = $("#message-received-template").html();
+        var compiled = Handlebars.compile(template);
+        var finalHTML = compiled(data);
+        var container = $(".myChat.selected");
+        container.append(finalHTML);
+
+        container.animate({ scrollTop: container.prop("scrollHeight")});
+      }
+    },
+
+    error: function (request, state, error) {
+
+    }
+  });
+}
+
 //  understand which button has pressed
 
 function txtEnterEvent(e) { //  e return which button has been pressed
@@ -39,6 +72,7 @@ function txtEnterEvent(e) { //  e return which button has been pressed
   if (keyPressed == 13) { //  13 is the same as "enter"
     addMessage();
     clearInput();
+    replyMessage()
     updateChatTime();
   }
 }
@@ -130,13 +164,13 @@ function updateChatTime() {
   var selectedChat = chat.eq(meIndex);
   selectedChat.addClass("selected");
 
-  var myTime = $(".myChat.selected > .message:last-child.received small").html();
+  var myTime = $(".myChat.selected > .message:last-child.sent small").html();
   var myTimeContainer = $(".chat.selected > .when > span");
 
   myTimeContainer.text(myTime);
 }
 
-// Update chat info
+// Update chat info --- in progress
 
 function updateChatInfo() {
   var me = $(this);
@@ -151,7 +185,7 @@ function init() {
   //dynamic selector
   var doc = $(document);
 
-  // reply function
+  // text and reply function
   doc.on("keyup", "#myTxt", txtEnterEvent);
 
   // dropdpwn message menu show
