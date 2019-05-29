@@ -55,6 +55,7 @@ function replyMessage() {
         container.append(finalHTML);
 
         container.animate({ scrollTop: container.prop("scrollHeight")});
+        updateChatTime();
       }
     },
 
@@ -73,7 +74,6 @@ function txtEnterEvent(e) { //  e return which button has been pressed
     addMessage();
     clearInput();
     replyMessage()
-    updateChatTime();
   }
 }
 
@@ -154,6 +154,8 @@ function deleteMessage() {
   message.remove();
 }
 
+// Update chat time
+
 function updateChatTime() {
   var me = $(".myChat.selected");
   var meIndex = me.index() - 1; // index 0 = always HTML myHeader
@@ -164,7 +166,7 @@ function updateChatTime() {
   var selectedChat = chat.eq(meIndex);
   selectedChat.addClass("selected");
 
-  var myTime = $(".myChat.selected > .message:last-child.sent small").html();
+  var myTime = $(".myChat.selected > .message:last-child.received small").html();
   var myTimeContainer = $(".chat.selected > .when > span");
 
   myTimeContainer.text(myTime);

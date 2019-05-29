@@ -322,13 +322,11 @@
 
 /* message */
 
-.message {
+/* .message {
   margin: 10px:
-}
+} */
 
-.message > p {
-  max-width: 45%;
-}
+
 
 .message span {
   padding: 6px 10px;
@@ -345,13 +343,13 @@
 }
 
 .sent {
-  float: right;
   position: relative;
+  text-align: right;
 }
 
 .received {
-  float: left;
   position: relative;
+  text-align: left;
 }
 
 .sent span {
@@ -393,13 +391,13 @@
 .sent > .myDropdown {
   position: absolute;
   top: 50%;
-  right: 80%;
+  right: 10%;
 }
 
 .received > .myDropdown {
   position: absolute;
   top: 80%;
-  left: 40%;
+  left: 30%;
 }
 
 /* footer */
