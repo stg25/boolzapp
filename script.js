@@ -144,7 +144,6 @@ function showDropdown() {
   myDropdown.toggleClass("hidden");
 }
 
-
 //  delete message sent
 
 function deleteMessage() {
